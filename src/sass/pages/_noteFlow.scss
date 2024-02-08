@@ -1,0 +1,57 @@
+// @import "../abstract/mixins";
+
+.noteFlow{
+	@include boxMixin;
+	@include textStyle;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	scrollbar-color: $main-color transparent;
+	overflow: scroll;
+
+	section{
+
+			height: max-content;
+			width: 100% ;
+			max-width: 80%;
+			margin: 0.5rem;
+			padding: 1rem;		
+			border-bottom: $main-color 2px solid;
+			
+
+			.notePtag{
+				padding: 1rem;
+				max-width: 100%;
+				height: fit-content;
+				overflow-wrap: break-word;
+				font-weight: 900;
+				font-size: 0.9rem;
+			}
+
+			.titleTag{
+				padding-top: 0.5rem;
+			}
+
+			.timeTag{
+				font-size: 0.75rem;
+				// padding-bottom: 1rem;
+			}
+
+			.usernameTag{
+				font-size: 0.8rem;
+				font-weight: 500;
+				padding-bottom: 0.7rem;
+			}
+			
+			div{
+				display: flex;
+				flex-wrap: wrap;
+				width: fit-content;
+				gap:0.2rem;
+				padding: 0.1rem;
+			}
+	}
+		
+						
+}

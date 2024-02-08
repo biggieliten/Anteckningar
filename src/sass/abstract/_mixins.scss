@@ -1,0 +1,42 @@
+
+@mixin centeringMixin{
+
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+@mixin boxMixin{
+	
+	height: 85vh;
+	width: 25vw;
+	border-radius: 0.8rem;
+	background-color: #58bd6b70;
+
+		
+}
+
+@mixin textStyle{
+	font-family: $primary-text-font;
+	color: $main-color;
+
+}
+
+@mixin buttonStyle(){
+		background-color: red ;
+		box-shadow: 0 0 10px red;
+		color: $main-color;
+		font-family: $primary-text-font;
+		cursor:pointer;
+		border: none;
+}
+@mixin inputStyle{
+	background-color: transparent;
+	color: $main-color;
+	border: $main-color 1px solid;
+	border-radius: 0.47rem;
+	font-family: $primary-text-font;
+}
+

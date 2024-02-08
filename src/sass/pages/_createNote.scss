@@ -1,0 +1,26 @@
+// @import "../abstract/mixins";
+
+.inputFields{
+	@include boxMixin;
+	@include centeringMixin;
+	flex-direction: column;
+
+	// gap: 3rem;
+	// border: 1px black solid;
+	margin-left: 8rem;
+	overflow:scroll;
+	scrollbar-color:$main-color transparent;
+	// background-image: radial-gradient(
+	// 	#64dc7a, #000b04 120%
+	// );
+	padding-bottom: 2rem;
+
+	h1{
+		
+		color: $main-color;
+		font-family: $primary-text-font;
+		margin-top: 0.7rem;
+		margin-bottom: 0.3rem;
+
+	}
+}

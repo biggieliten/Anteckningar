@@ -1,24 +1,42 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import './modules/API/postData';
+import './modules/API/getData';
+import './modules/API/putData';
+import './modules/API/deleteData';
+import './sass/styles.scss';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+
+
+// const baseURL = 'https://o6wl0z7avc.execute-api.eu-north-1.amazonaws.com';
+
+// const note = {
+// 	username: "ada",
+// 	title: "Första anteckningen",
+// 	note: "Min första anteckning",
+//   };
+
+
+//   async function getUser() {
+// 	try {
+// 	  const response: AxiosResponse = await axios.get(baseURL + '/api/notes/ada	');
+// 	  console.log(response.data);
+// 	} catch (error) {
+// 	  console.error(error);
+// 	}
+//   }
+// getUser()
+
+
+// const postData = async () => {  
+// 	 console.log("object");  baseURL + "/api/notes/:username"	
+// 	 	try {    
+// 		const dataToSend = note;     
+// 		const response: AxiosResponse = await axios.post(baseURL + "/api/notes", dataToSend );    
+// 		const responseData: JSON = response.data;   
+// 		console.log(responseData);} 
+// 		catch (error) {} 
+// 	};
+// 	postData();
+// 	// console.log(postData());
+// // console.log(note);
+
