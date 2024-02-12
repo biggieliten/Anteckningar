@@ -3,7 +3,10 @@
 .inputFields{
 	@include boxMixin;
 	@include centeringMixin;
+	@include textStyle;
 	flex-direction: column;
+	animation: bounceInRight 1.35s ease 0s 1 normal forwards;
+
 
 	// gap: 3rem;
 	// border: 1px black solid;
@@ -18,9 +21,52 @@
 	h1{
 		
 		color: $main-color;
-		font-family: $primary-text-font;
 		margin-top: 0.7rem;
 		margin-bottom: 0.3rem;
 
+	}
+}
+
+@keyframes bounceInRight {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 0;
+		transform: translateX(250px);
+	}
+
+	38% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	55% {
+		animation-timing-function: ease-in;
+		transform: translateX(68px);
+	}
+
+	72% {
+		animation-timing-function: ease-out;
+		transform: translateX(0);
+	}
+
+	81% {
+		animation-timing-function: ease-in;
+		transform: translateX(32px);
+	}
+
+	90% {
+		animation-timing-function: ease-out;
+		transform: translateX(0);
+	}
+
+	95% {
+		animation-timing-function: ease-in;
+		transform: translateX(8px);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		transform: translateX(0);
 	}
 }

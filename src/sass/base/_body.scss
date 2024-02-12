@@ -2,6 +2,7 @@
 
 body{
 	.wrapper{
+		// cursor: url("../image/falloutCursor\ cur"), auto ;
 		@include centeringMixin;
 		background-repeat: no-repeat;
 		background-size: fit;
@@ -16,9 +17,17 @@ body{
 		}
 		min-height: 100vh ;
 		width: 100vw;
+
+		.switc-css{
+			display: flex;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
 		
 	}
 }
+
 
 .scan{
 	overflow: hidden;
@@ -26,7 +35,7 @@ body{
 	height:100%;
 	background:linear-gradient(rgba(0,0,0,0),#4eff71ae);position:absolute;
 	animation:scan;
-	animation-duration:3.5s;
+	animation-duration:3.2s;
 	animation-iteration-count:
 	 infinite;
 	 z-index:-1;
@@ -36,9 +45,10 @@ body{
 
 	@keyframes scan {
 		0% {
-			top: calc(-1 * var(--wrapper-height)); /* Start off the wrapper */
+			top: calc(-1 * var(--wrapper-height)); 
 		}
 		100% {
-			top: calc(100% - var(--wrapper-height)); /* End at the bottom of the wrapper */
+			top: calc(100% - var(--wrapper-height)); 
 		}
+		
 	}

@@ -1,9 +1,8 @@
-export interface arrayInterface{
-	notes: [];
-}
+// export interface arrayInterface{
+// 	notes: [];
+// }
 
 export interface noteInterface {
-notes: string[];
 id: string;
 username: string;
 title :string;
@@ -17,9 +16,9 @@ export interface postNoteInterface {
 	note: string;
 }
 
-
 export interface ApiResponse {
-	response: noteInterface[];
+	notes: noteInterface[];
+	// response: noteInterface[];
 	status: number;
   }
 

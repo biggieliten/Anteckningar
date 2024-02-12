@@ -1,15 +1,10 @@
-import axios, { AxiosResponse,  } from "axios";
+import axios from "axios";
+export const baseURL = 'https://o6wl0z7avc.execute-api.eu-north-1.amazonaws.com';
 import { deleteData } from "./deleteData";
 import { putData } from "./putData";
-import { noteInterface, postNoteInterface, ApiError, ApiResponse} from '../types/interfaces';
-import { send } from "process";
-import { get } from "http";
-const baseURL = 'https://o6wl0z7avc.execute-api.eu-north-1.amazonaws.com';
+import { noteInterface, ApiError, ApiResponse} from '../types/interfaces';
 const deleteButtons: HTMLButtonElement[] = [];
 const searchButton = document.getElementById('searchButton') as HTMLButtonElement;
-// let noteDatas: any = [];
-
-
 
 
 // Funktionen nedan är en fungerande version av den som finns i beskrivningen. Ifall denna används, se över så att alla interfaces används och är importerade.	
@@ -21,16 +16,20 @@ export const getUser = async (): Promise<ApiResponse | ApiError> =>{
 	
 	  displayNotes(response.data)
 	  return response.data;
-	} catch (error: any) {
-	//   console.error(error);
-	return {
-		message: error.message,
-		status: error.response.status
-	}
-	}
-  }
+	} catch (error) {
+        if (axios.isAxiosError(error)) {
+            const err: ApiError = {
+                message: error.message, 
+                status: error.response ? error.response.status : 500
+            };
 
+            return err;
 
+        } else {
+            throw error;
+        }
+    }
+};
 
 
 // export async function getUser() {
@@ -46,7 +45,7 @@ export const getUser = async (): Promise<ApiResponse | ApiError> =>{
 // }
 
 
-function displayNotes(noteData: any): void{
+function displayNotes(noteData: ApiResponse){
 	
 	const notesArr: noteInterface[] = noteData.notes;
 	
@@ -77,9 +76,13 @@ function displayNotes(noteData: any): void{
 		//Skapar en p-tagg för varje object och hämtar värdet note. 
 		const noteContentElement = document.createElement('p') as HTMLParagraphElement;
 		noteContentElement.classList.add("notePtag",note.id);
-		noteContentElement.textContent = note.note;
+		noteContentElement.innerHTML = note.note;
 		noteContentElement.setAttribute("contenteditable", "true");	
-		
+
+		// Skapar en p-tagg för varje object och hämtar värdet username. 
+		const usernameElement = document.createElement('p') as HTMLParagraphElement;
+		usernameElement.textContent = `- ${note.username}`;
+		usernameElement.classList.add('usernameTag');
 		
 		
 		const deleteButton = document.createElement('button') as HTMLButtonElement;
@@ -99,16 +102,11 @@ function displayNotes(noteData: any): void{
 		sendUpdateButton.classList.add('update-button');
 
 		sendUpdateButton.addEventListener('click', () =>{
-			putData(note.id, noteContentElement.textContent);
+			putData(note.id, noteContentElement.textContent ?? '');
 		})
 
+		
 		const noteButtonsCont = document.createElement('div') as HTMLElement;
-		
-		
-		// Skapar en p-tagg för varje object och hämtar värdet username. 
-		const usernameElement = document.createElement('p') as HTMLParagraphElement;
-		usernameElement.textContent = `- ${note.username}`;
-		usernameElement.classList.add('usernameTag');
 
 		noteButtonsCont.append(deleteButton, sendUpdateButton)
 		noteElement.append(dateCreated, titleElement, noteContentElement, usernameElement, noteButtonsCont, /* updateButton, updateInputSection,*/  );

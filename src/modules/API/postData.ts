@@ -1,16 +1,12 @@
-import axios, { AxiosResponse,  } from "axios";
-import { postNoteInterface } from '../types/interfaces';
-import { noteInterface } from '../types/interfaces';
+import axios from "axios";
+import { ApiResponse, ApiError, postNoteInterface } from '../types/interfaces';
 import { getUser } from "./getData";
+import { baseURL } from "./getData";
 
 
-// import { deleteNoteArr } from "./getData";
-
-
-const baseURL = 'https://o6wl0z7avc.execute-api.eu-north-1.amazonaws.com';
 	
 	const submitButton = document.querySelector(".submit-button") as HTMLButtonElement;
-	const postData = async () => {  
+	const postData = async (): Promise<ApiResponse | ApiError> => {  
 		
 		
 		const note = (document.getElementById("note-input") as HTMLTextAreaElement).value
@@ -22,21 +18,26 @@ const baseURL = 'https://o6wl0z7avc.execute-api.eu-north-1.amazonaws.com';
 		// let note = noteInput.value;
 		const noteDataObject: postNoteInterface = {username, title, note};
 		
-		console.log("Request Payload:", noteDataObject)
-
-		// if (username.trim() === "" || note.trim() === "") {
-		// 	console.error("Username and note cannot be empty.");
-		// 	return; // Exit the function if inputs are empty.
-		// }
+		//Varnar ifall användaren försöker skicka in tomma inputs.
+		if (username.trim() === "" || note.trim() === "" || title.trim() === "") {
+			alert("Username, note and title cannot be empty");
+		}
 	
 		
 		try {    
-			const response: AxiosResponse = await axios.post<noteInterface>(baseURL + "/api/notes", noteDataObject );    
-			return response;
-		} 
-		catch (error: any) {
-			console.error("Error posting data:", error.response.data);
-		} 
+			const response = await axios.post<ApiResponse>(baseURL + "/api/notes", noteDataObject );    
+			return response.data;
+		} catch (error) {
+			if (axios.isAxiosError(error)) {
+				const err: ApiError = {
+					message: error.message,
+					status: error.response ? error.response.status : 500
+				};
+				return err;
+			} else {
+				throw error;
+			}
+		}
 	};
 	
 

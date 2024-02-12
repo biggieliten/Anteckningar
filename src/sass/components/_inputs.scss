@@ -2,21 +2,26 @@
 
 
 .noteInputBox{
+
 max-width: 80%;
-height: max-content;
-	#note-input{
+// height: max-content;
+#note-input{
 	
-		@include inputStyle;
-		// @include contColors;	
-		width: 20rem;
-		max-width: 100%;
-		max-height: 10rem;
-		min-height: 20rem;
-		height: max-content;
-		font-size: 1rem;		
-		padding: 1rem;
-		resize: none;
+	@include inputStyle;
+	width: 20rem;
+	max-width: 100%;
+	max-height: 10rem;
+	min-height: 20rem;
+	height: max-content;
+	font-size: 1.2rem;		
+	padding: 1rem;
+	margin-top: 2rem;
+	resize: none;
 	
+}
+
+	#note-input:hover{
+		@include inputHoverEffect;
 	}
 }
 
@@ -26,27 +31,51 @@ height: max-content;
 	  
 }
 
-.userTitleInputBox{
+.userInfoInputBox{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	max-width: 80%;
-	padding-top: 1rem;
+	max-height: fit-content;
+	font-size: 1.1rem;
+
+	h1{
+		font-family: $fallout-font;
+		font-size: 1.25rem;
+		letter-spacing: 0.1rem;
+	}
+
+	
 	
 	#username-input{
 		@include inputStyle;
+		font-size: 1.1rem;
 		font-weight: 600;
 		background-color: transparent;
 		padding: 0.25rem;
 
 	}
+
+	#username-input:hover{
+		@include inputHoverEffect;
+
+	}
+
+
 
 	#title-input{
 		@include inputStyle;
 		font-weight: 600;
+		font-size: 1.1rem;
 		background-color: transparent;
 		padding: 0.25rem;
 
 	}
 	
+	#title-input:hover{
+		@include inputHoverEffect;
+	}
+	
 }
+
+

@@ -1,20 +1,23 @@
 import axios, { AxiosResponse,  } from "axios";
-import { getUser } from "./getData";
+import { baseURL } from "./getData";
+import { ApiError, ApiResponse} from "../types/interfaces";
 
-const baseURL = 'https://o6wl0z7avc.execute-api.eu-north-1.amazonaws.com';
 
-// const updatedNote = {
-// 	note: "Updated note",
-// }
-
-export async function putData(noteID: any, updateNoteValue:any) {
+export const putData =  async (noteID: string, updateNoteValue:string): Promise<ApiResponse | ApiError> => {
 	try{
 
 		const response: AxiosResponse = await axios.put(`${baseURL}/api/notes/${noteID}`,{note: updateNoteValue})
 		// console.log(response.data);
 		return response.data;
-	}catch(error: any){
-		console.error("put error", error.response.data);
-}
-}
-// putData();
+	} catch (error) {
+        if (axios.isAxiosError(error)) {
+            const err: ApiError = {
+                message: error.message,
+                status: error.response ? error.response.status : 500
+            };
+            return err;
+        } else {
+            throw error;
+        }
+    }
+};
