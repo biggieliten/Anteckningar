@@ -3,14 +3,14 @@ import { baseURL } from "./getData";
 import { ApiError, ApiResponse} from "../types/interfaces";
 
 
-export const putData =  async (noteID: string, updateNoteValue:string): Promise<ApiResponse | ApiError> => {
+export const putData =  async (noteID: string, updateNoteValue:string): Promise<ApiResponse | ApiError<string, number>> => {
 	try{
 		const response: AxiosResponse = await axios.put(`${baseURL}/api/notes/${noteID}`,{note: updateNoteValue})
 		// console.log(response.data);
 		return response.data;
 	} catch (error) {
         if (axios.isAxiosError(error)) {
-            const err: ApiError = {
+            const err: ApiError<string, number> = {
                 message: error.message,
                 status: error.response ? error.response.status : 500
             };

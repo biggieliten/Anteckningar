@@ -22,7 +22,7 @@ export interface ApiResponse {
 	status: number;
   }
 
-export interface ApiError {
-	message: string
-	status: number
+export interface ApiError<T, D> {
+	message: T;
+	status: D;
   }

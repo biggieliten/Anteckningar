@@ -4,7 +4,7 @@ import { getUser } from "./getData";
 import { baseURL } from "./getData";
 
 	const submitButton = document.querySelector(".submit-button") as HTMLButtonElement;
-	const postData = async (): Promise<ApiResponse | ApiError> => {  
+	const postData = async (): Promise<ApiResponse | ApiError<string, number>> => {  
 		
 		
 		const note = (document.getElementById("note-input") as HTMLTextAreaElement).value
@@ -24,7 +24,7 @@ import { baseURL } from "./getData";
 			return response.data;
 		} catch (error) {
 			if (axios.isAxiosError(error)) {
-				const err: ApiError = {
+				const err: ApiError<string, number> = {
 					message: error.message,
 					status: error.response ? error.response.status : 500
 				};
