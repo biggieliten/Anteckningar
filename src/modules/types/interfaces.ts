@@ -14,11 +14,10 @@ export interface postNoteInterface {
 
 export interface ApiResponse {
 	notes: noteInterface[];
-	// response: noteInterface[];
 	status: number;
   }
 
 export interface ApiError<T, D> {
 	message: T;
 	status: D;
-  }
+  }	
