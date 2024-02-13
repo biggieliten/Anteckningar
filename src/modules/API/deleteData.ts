@@ -2,7 +2,7 @@ import axios, {AxiosResponse} from "axios";
 import { baseURL } from "./getData";
 import { ApiResponse, ApiError } from '../types/interfaces';
 
-export const deleteData = async (noteId: string): Promise<ApiResponse | ApiError> =>{
+export const deleteData = async (noteId: string): Promise<ApiResponse | ApiError> => {
 
 	try {
 		const response: AxiosResponse = await axios.delete(`${baseURL}/api/notes/${noteId}`);

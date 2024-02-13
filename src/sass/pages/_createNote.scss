@@ -1,4 +1,4 @@
-// @import "../abstract/mixins";
+@import "../abstract/mixins";
 
 .inputFields{
 	@include boxMixin;
@@ -7,15 +7,9 @@
 	flex-direction: column;
 	animation: bounceInRight 1.35s ease 0s 1 normal forwards;
 
-
-	// gap: 3rem;
-	// border: 1px black solid;
 	margin-left: 8rem;
 	overflow:scroll;
 	scrollbar-color:$main-color transparent;
-	// background-image: radial-gradient(
-	// 	#64dc7a, #000b04 120%
-	// );
 	padding-bottom: 2rem;
 
 	h1{

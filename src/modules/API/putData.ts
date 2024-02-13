@@ -5,7 +5,6 @@ import { ApiError, ApiResponse} from "../types/interfaces";
 
 export const putData =  async (noteID: string, updateNoteValue:string): Promise<ApiResponse | ApiError> => {
 	try{
-
 		const response: AxiosResponse = await axios.put(`${baseURL}/api/notes/${noteID}`,{note: updateNoteValue})
 		// console.log(response.data);
 		return response.data;

@@ -3,8 +3,6 @@ import { ApiResponse, ApiError, postNoteInterface } from '../types/interfaces';
 import { getUser } from "./getData";
 import { baseURL } from "./getData";
 
-
-	
 	const submitButton = document.querySelector(".submit-button") as HTMLButtonElement;
 	const postData = async (): Promise<ApiResponse | ApiError> => {  
 		
@@ -13,9 +11,6 @@ import { baseURL } from "./getData";
 		const username = (document.getElementById("username-input") as HTMLInputElement).value
 		const title = (document.getElementById("title-input") as HTMLInputElement).value
 		
-		// let username = usernameInput.value;
-		// let title = titleInput.value;
-		// let note = noteInput.value;
 		const noteDataObject: postNoteInterface = {username, title, note};
 		
 		//Varnar ifall användaren försöker skicka in tomma inputs.
