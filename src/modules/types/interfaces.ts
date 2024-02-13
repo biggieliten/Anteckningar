@@ -1,7 +1,3 @@
-// export interface arrayInterface{
-// 	notes: [];
-// }
-
 export interface noteInterface {
 id: string;
 username: string;
