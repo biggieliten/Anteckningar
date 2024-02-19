@@ -16,7 +16,7 @@ Table of Contents
 2. Fork or clone the reposetory through Github.
 3. When forked or cloned, you have to run the following step to install node_modules library.
 4. Open the terminal (CTRL + J on PC) and type npm install.
-5. You also need to execute: npm install sass and npm installa axios.
+5. You also need to execute: npm install sass and npm install axios.
 6. Next step is to run the page on the browser with:
 7. npm run dev.
 
